@@ -1,0 +1,76 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+import heroBg from "@/assets/hero-bg-premium.jpg";
+
+export const HeroSection = () => {
+  const { t, language } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const rotatingWords = language === "jp" 
+    ? ["成長", "グローバル化", "デジタルトランスフォーメーション"]
+    : ["Growth", "Globalization", "Digital Transformation"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % rotatingWords.length);
+        setIsVisible(true);
+      }, 500);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [rotatingWords.length]);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      
+      {/* Purple overlay */}
+      <div className="absolute inset-0 bg-[hsl(271,85%,15%)]/70" />
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-display font-light leading-tight animate-fade-up cursor-default">
+            <span className="block text-7xl md:text-8xl lg:text-9xl text-gold">
+              {language === "jp" ? "資本" : "Capital"}
+            </span>
+            <span className="block text-3xl md:text-4xl lg:text-5xl mt-2 text-foreground">
+              {language === "jp" ? "のために" : "for"}
+            </span>
+            <span 
+              className={`block text-4xl md:text-5xl lg:text-6xl text-gold transition-all duration-500 mt-1 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+              }`}
+            >
+              {rotatingWords[currentIndex]}
+            </span>
+          </h1>
+          
+          <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto animate-fade-up delay-200 transition-colors duration-300 hover:text-primary cursor-default">
+            {t("hero.subheadline")}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-300">
+            <Button asChild variant="hero" size="xl" className="glossy-btn">
+              <Link to="/bio">{t("hero.aboutUs")}</Link>
+            </Button>
+            <Button asChild variant="heroOutline" size="xl">
+              <Link to="/contact">{t("hero.contact")}</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  );
+};
