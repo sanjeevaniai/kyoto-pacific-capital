@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import kpcLogoEn from "@/assets/kpc-logo-jp.png";
 
 export const Footer = () => {
   const { t, language } = useLanguage();
@@ -11,13 +12,13 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block">
-              <span className="text-xl font-logo font-bold text-logo tracking-wide leading-tight">
-                {language === "jp" ? (
-                  <>京都<br />パシフィック<br />キャピタル</>
-                ) : (
-                  <>Kyoto<br />Pacific<br />Capital</>
-                )}
-              </span>
+              {language === "jp" ? (
+                <span className="text-xl font-logo font-bold text-logo tracking-wide leading-tight">
+                  京都<br />パシフィック<br />キャピタル
+                </span>
+              ) : (
+                <img src={kpcLogoEn} alt="Kyoto Pacific Capital" className="h-10" />
+              )}
             </Link>
             <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-md">
               {t("footer.tagline")}

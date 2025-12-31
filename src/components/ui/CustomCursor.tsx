@@ -49,31 +49,26 @@ export const CustomCursor = () => {
     setIsClicking(false);
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
-    setIsVisible(false);
-  }, []);
-
   useEffect(() => {
     if (isTouchDevice) return;
+
+    // Show cursor initially
+    setIsVisible(true);
 
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseover', handleMouseEnter);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
 
-    // Hide default cursor
-    document.body.style.cursor = 'none';
+    // Keep default cursor visible
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseEnter);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.body.style.cursor = 'auto';
     };
-  }, [isTouchDevice, handleMouseMove, handleMouseEnter, handleMouseDown, handleMouseUp, handleMouseLeave]);
+  }, [isTouchDevice, handleMouseMove, handleMouseEnter, handleMouseDown, handleMouseUp]);
 
   if (isTouchDevice || !isVisible) return null;
 
@@ -95,9 +90,9 @@ export const CustomCursor = () => {
       <img 
         src={cursorImage} 
         alt="" 
-        className="w-6 h-6 object-contain"
+        className="w-8 h-8 object-contain"
         style={{
-          filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))',
+          filter: 'drop-shadow(0 2px 8px rgba(212, 175, 55, 0.6)) brightness(1.1)',
         }}
       />
     </div>

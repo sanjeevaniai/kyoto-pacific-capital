@@ -7,10 +7,9 @@ export const content = {
     brand: "KPC",
   },
   hero: {
-    headline: "Capital for Growth, Globalisation, and Digital Transformation",
+    headline: "Partners for Capital, Intelligent Growth, Globalisation, and Strategic Innovation",
     subheadline: "Working alongside entrepreneurs to scale and globalise leading businesses.",
-    aboutUs: "About Us",
-    contact: "Contact",
+    learnMore: "Learn More",
   },
   home: {
     stats: {
@@ -72,7 +71,7 @@ export const content = {
     paragraph4: "Prior to Goldman Sachs, Ankur worked at Panasonic in semiconductor design and business development roles in Japan from 1991 to 1994.",
     education: {
       title: "Education",
-      text: "Ankur holds an MBA from Harvard Business School and an MS in Electrical Engineering from Tufts University, graduating summa cum laude. He currently serves on the Board of Trustees of Tufts University as Chairman of the Audit, Risk and Compliance Committee.",
+      text: "Ankur holds an MBA from Harvard Business School and MS in Electrical Engineering (Summa Cum Laude) from Tufts University. He currently serves on the Board of Trustees of Tufts University as Chairman of the Audit, Risk and Compliance Committee.",
     },
     personal: {
       title: "Personal",
@@ -251,7 +250,7 @@ export const content = {
     office: "Tokyo, Japan",
   },
   footer: {
-    tagline: "Working alongside entrepreneurs to scale and globalise leading businesses across Japan and India.",
+    tagline: "Working alongside entrepreneurs to scale and globalise leading businesses across Japan, India, United States, and Europe.",
     quickLinks: "Quick Links",
     aboutUs: "About Us",
     portfolio: "Portfolio",

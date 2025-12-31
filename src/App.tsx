@@ -5,10 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Bio from "./pages/Bio";
+import Company from "@/pages/Company";
 import Strategy from "./pages/Strategy";
 import Investments from "./pages/Investments";
 import Contact from "./pages/Contact";
@@ -22,13 +22,13 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <TooltipProvider>
-        <CustomCursor />
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/bio" element={<Bio />} />
+            <Route path="/company" element={<Company />} />
             <Route path="/strategy" element={<Strategy />} />
             <Route path="/investments" element={<Investments />} />
             <Route path="/contact" element={<Contact />} />

@@ -1,31 +1,51 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { GlassCard } from "@/components/ui/GlassCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Strategy = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
 
-  const sectors = [
+  const geographicFocus = [
     {
-      title: String(t("strategyPage.sectors.technology.title")),
-      description: String(t("strategyPage.sectors.technology.description")),
+      title: language === "jp" ? "日本" : "Japan",
+      description: language === "jp" 
+        ? "深いローカルネットワークと運営ノウハウを持つ主要市場。成長と拡大のポジションにある企業に焦点を当てています。"
+        : "Our primary market with deep local networks and operational expertise. We focus on companies positioned for growth and expansion.",
     },
     {
-      title: String(t("strategyPage.sectors.sustainability.title")),
-      description: String(t("strategyPage.sectors.sustainability.description")),
+      title: language === "jp" ? "インド" : "India",
+      description: language === "jp"
+        ? "大きな成長ポテンシャルを持つ戦略的拡大市場。多様な市場でビジネスを拡大する経験を活用します。"
+        : "Strategic expansion market with significant growth potential. We leverage our experience in scaling businesses across diverse markets.",
     },
     {
-      title: String(t("strategyPage.sectors.healthcare.title")),
-      description: String(t("strategyPage.sectors.healthcare.description")),
+      title: language === "jp" ? "アメリカ" : "United States",
+      description: language === "jp"
+        ? "ポートフォリオ戦略に合致する技術とイノベーションセクターでの選択的機会。"
+        : "Selective opportunities in technology and innovation sectors that align with our portfolio strategy.",
     },
     {
-      title: String(t("strategyPage.sectors.consumer.title")),
-      description: String(t("strategyPage.sectors.consumer.description")),
+      title: language === "jp" ? "ヨーロッパ" : "Europe",
+      description: language === "jp"
+        ? "グローバルネットワークと専門知識を通じて戦略的価値を付加できるセクターへのターゲット投資。"
+        : "Targeted investments in sectors where we can add strategic value through our global network and expertise.",
     },
   ];
+
+  const whatWeLookFor = language === "jp" 
+    ? [
+        "優れた経営陣",
+        "長期的成長を遂げる魅力的なセクター",
+        "変革と価値創造の機会",
+        "国境を越えた拡大の恩恵を受けることができる企業",
+      ]
+    : [
+        "Exceptional management teams",
+        "Attractive sectors with long-term growth",
+        "Opportunities for transformation and value creation",
+        "Companies that can benefit from cross-border expansion",
+      ];
 
   return (
     <Layout>
@@ -35,95 +55,79 @@ const Strategy = () => {
         canonicalUrl="https://kyotopacific.com/strategy"
       />
 
-      <section className="pb-24 min-h-screen">
+      <section className="pb-24 min-h-screen pt-24">
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Hero */}
-          <div className="max-w-4xl mb-20">
+          {/* Header */}
+          <div className="max-w-4xl mx-auto mb-20 text-center">
             <h1 className="text-4xl md:text-5xl font-display font-light text-foreground mb-4 animate-fade-up">
-              {String(t("strategyPage.title"))}
+              {language === "jp" ? "投資戦略" : "Investment Strategy"}
             </h1>
-            <p className="text-xl text-primary animate-fade-up delay-100">
-              {String(t("strategyPage.subtitle"))}
+          </div>
+
+          {/* Section 1: Our Focus */}
+          <div className="max-w-4xl mx-auto mb-20">
+            <h2 className="text-2xl md:text-3xl font-display font-light text-foreground mb-6 animate-fade-up">
+              {language === "jp" ? "私たちの焦点" : "Our Focus"}
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed animate-fade-up delay-100">
+              {language === "jp" 
+                ? "KPCのビジョンは、日本とインドに焦点を当てたアジアを代表する投資会社となり、優れたビジネスの変革と創造に貢献することです。"
+                : "KPC's vision is to become the preeminent Asian investment firm focused on Japan and India, committed to the transformation and creation of leading businesses."}
             </p>
           </div>
 
-          {/* Philosophy */}
-          <div className="max-w-4xl mb-20">
-            <h2 className="text-2xl font-display font-light text-foreground mb-6 animate-fade-up">
-              {String(t("strategyPage.approach.title"))}
-            </h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p className="animate-fade-up delay-100">
-                {String(t("strategyPage.approach.paragraph1"))}
-              </p>
-              <p className="animate-fade-up delay-200">
-                {String(t("strategyPage.approach.paragraph2"))}
-              </p>
-              <p className="animate-fade-up delay-300">
-                {String(t("strategyPage.approach.paragraph3"))}
-              </p>
-            </div>
-          </div>
-
-          {/* Investment Criteria */}
-          <div className="max-w-4xl mb-20">
-            <h2 className="text-2xl font-display font-light text-foreground mb-6 animate-fade-up">
-              {String(t("strategyPage.criteria.title"))}
-            </h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p className="animate-fade-up delay-100">
-                {String(t("strategyPage.criteria.paragraph1"))}
-              </p>
-              <p className="animate-fade-up delay-200">
-                {String(t("strategyPage.criteria.paragraph2"))}
-              </p>
-            </div>
-          </div>
-
-          {/* Target Sectors */}
+          {/* Section 2: Geographic Focus */}
           <div className="mb-20">
-            <h2 className="text-2xl font-display font-light text-foreground mb-8 animate-fade-up">
-              {String(t("strategyPage.sectors.title"))}
+            <h2 className="text-2xl md:text-3xl font-display font-light text-foreground mb-8 text-center animate-fade-up">
+              {language === "jp" ? "地理的フォーカス" : "Geographic Focus"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {sectors.map((sector, index) => (
-                <div
-                  key={sector.title}
-                  className="animate-fade-up"
+              {geographicFocus.map((region, index) => (
+                <GlassCard
+                  key={region.title}
+                  className="p-6 animate-fade-up"
                   style={{ animationDelay: `${(index + 1) * 100}ms` }}
                 >
-                  <h3 className="text-lg font-display font-light text-foreground mb-2">
-                    {sector.title}
+                  <h3 className="text-xl font-display font-light text-foreground mb-3">
+                    {region.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {sector.description}
+                  <p className="text-muted-foreground leading-relaxed">
+                    {region.description}
                   </p>
-                </div>
+                </GlassCard>
               ))}
             </div>
           </div>
 
-          {/* Geographic Focus */}
-          <div className="max-w-4xl mb-16">
-            <h2 className="text-2xl font-display font-light text-foreground mb-6 animate-fade-up">
-              {String(t("strategyPage.geography.title"))}
+          {/* Section 3: What We Look For */}
+          <div className="max-w-4xl mx-auto mb-20">
+            <h2 className="text-2xl md:text-3xl font-display font-light text-foreground mb-6 animate-fade-up">
+              {language === "jp" ? "投資基準" : "What We Look For"}
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6 animate-fade-up delay-100">
-              {String(t("strategyPage.geography.text"))}
-            </p>
-            <p className="text-primary font-medium animate-fade-up delay-200">
-              {String(t("strategyPage.geography.locations"))}
-            </p>
+            <ul className="space-y-4">
+              {whatWeLookFor.map((item, index) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-lg text-muted-foreground leading-relaxed animate-fade-up"
+                  style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                >
+                  <span className="text-gold mt-1">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* CTA */}
-          <div className="animate-fade-up">
-            <Link to="/investments">
-              <Button variant="hero" size="lg" className="group">
-                {String(t("strategyPage.cta"))}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+          {/* Section 4: Our Approach */}
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-display font-light text-foreground mb-6 animate-fade-up">
+              {language === "jp" ? "私たちのアプローチ" : "Our Approach"}
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed animate-fade-up delay-100">
+              {language === "jp"
+                ? "財務工学ではなく、変革を通じた長期的な成長に焦点を当てています。経営陣とパートナーシップを組み、リーディングカンパニーを創出します。"
+                : "We focus on long-term growth through transformation, not financial engineering. We partner with management teams to create leading companies."}
+            </p>
           </div>
         </div>
       </section>

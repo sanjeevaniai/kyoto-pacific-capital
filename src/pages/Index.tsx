@@ -1,9 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { StatsBar } from "@/components/sections/StatsBar";
-import { BriefIntro } from "@/components/sections/BriefIntro";
-import { FeaturedInvestments } from "@/components/sections/FeaturedInvestments";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { SEO } from "@/components/SEO";
 
 const Index = () => {
@@ -17,10 +13,6 @@ const Index = () => {
         includeFAQSchema={true}
       />
       <HeroSection />
-      <StatsBar />
-      <BriefIntro />
-      <FeaturedInvestments />
-      <CTABanner />
     </Layout>
   );
 };

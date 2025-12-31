@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroBg from "@/assets/hero-bg-premium.jpg";
+import heroBgEn from "@/assets/hero-bg-premium.png";
+import heroBgJp from "@/assets/hero-bg-japan.png";
 
 export const HeroSection = () => {
   const { t, language } = useLanguage();
+  const heroBg = language === "jp" ? heroBgJp : heroBgEn;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const rotatingWords = language === "jp" 
-    ? ["成長", "グローバル化", "デジタルトランスフォーメーション"]
-    : ["Growth", "Globalization", "Digital Transformation"];
+    ? ["資本", "インテリジェント成長", "グローバル化", "戦略的イノベーション"]
+    : ["Capital", "Intelligent Growth", "Globalization", "Strategic Innovation"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,7 +44,7 @@ export const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="font-display font-light leading-tight animate-fade-up cursor-default">
             <span className="block text-7xl md:text-8xl lg:text-9xl text-gold">
-              {language === "jp" ? "資本" : "Capital"}
+              {language === "jp" ? "パートナー" : "Partners"}
             </span>
             <span className="block text-3xl md:text-4xl lg:text-5xl mt-2 text-foreground">
               {language === "jp" ? "のために" : "for"}
@@ -59,13 +62,13 @@ export const HeroSection = () => {
             {t("hero.subheadline")}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-300">
-            <Button asChild variant="hero" size="xl" className="glossy-btn">
-              <Link to="/bio">{t("hero.aboutUs")}</Link>
-            </Button>
-            <Button asChild variant="heroOutline" size="xl">
-              <Link to="/contact">{t("hero.contact")}</Link>
+          {/* CTA Button */}
+          <div className="mt-12 flex items-center justify-center animate-fade-up delay-300">
+            <Button asChild variant="heroOutline" size="xl" className="group">
+              <Link to="/company">
+                {t("hero.learnMore")}
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>

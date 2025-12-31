@@ -121,12 +121,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Hide default cursor on non-touch devices */
-  @media (hover: hover) and (pointer: fine) {
-    *, *::before, *::after {
-      cursor: none !important;
-    }
-  }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-light;

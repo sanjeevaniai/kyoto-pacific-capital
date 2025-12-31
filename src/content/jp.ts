@@ -7,10 +7,9 @@ export const content = {
     brand: "KPC",
   },
   hero: {
-    headline: "成長、グローバル化、デジタルトランスフォーメーションのための資本",
+    headline: "資本、インテリジェント成長、グローバル化、戦略的イノベーションのためのパートナー",
     subheadline: "起業家と共に、優れたビジネスの成長とグローバル化を支援します。",
-    aboutUs: "会社概要",
-    contact: "お問い合わせ",
+    learnMore: "詳細を見る",
   },
   home: {
     stats: {
